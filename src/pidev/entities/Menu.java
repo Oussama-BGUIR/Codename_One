@@ -5,7 +5,7 @@ import com.codename1.util.BigDecimal;
 public class Menu {
     private int id  ;
     private int  calorie ;
-    private boolean disponibilite ;
+    private int  disponibilite ;
     private String nom;
     private String description;
 
@@ -13,9 +13,16 @@ public class Menu {
     public Menu() {
     }
 
+    public Menu(int calorie, int disponibilite, String nom, String description) {
+        this.calorie = calorie;
+        this.disponibilite = disponibilite;
+        this.nom = nom;
+        this.description = description;
+    }
+
 
     //constructeur parametré
-    public Menu(int id, String nom, String description, int calorie , boolean disponibilite) {
+    public Menu(int id, String nom, String description, int calorie , int disponibilite) {
         this.id = id;
         this.nom = nom;
         this.description = description;
@@ -68,11 +75,11 @@ public class Menu {
         this.calorie = calorie;
     } 
     
-    public boolean getDisponibilite() {
+    public int getDisponibilite() {
     return disponibilite;
     }
 
-    public void setDisponibilite(boolean disponibilite) {
+    public void setDisponibilite(int disponibilite) {
         this.disponibilite = disponibilite;
     }
     

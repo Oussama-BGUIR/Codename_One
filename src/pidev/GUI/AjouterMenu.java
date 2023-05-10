@@ -23,7 +23,7 @@ public class AjouterMenu extends Form {
         setLayout(BoxLayout.y());
         TextField tfnom = new TextField("","Nom de Menu !!");
         TextField tfDescription = new TextField("","Description de menu");
-      /*  TextField tfCalorie = new TextField("","les calories disponibles"); */
+        TextField tfCalorie = new TextField("","les calories disponibles"); 
         CheckBox cb = new CheckBox("Disponibilite");
 
         Button btnadd =new Button("add menu !!");
@@ -33,17 +33,18 @@ public class AjouterMenu extends Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 //tester si le champs nom est vide
-                if(tfnom.getText().length()==0 && tfDescription.getText().length()==0 && cb.getText().length()==0){
-                    Dialog.show("Alert","please fill all the fiels","ok",null);
+                if(tfnom.getText().length()==0 || tfDescription.getText().length()==0 || cb.getText().length()==0 || tfCalorie.getText().length()==0){
+                    Dialog.show("Alert","S'il vous plait remplir tout les champs","ok",null);
                 }
                 else{
 
-                    
-                    int disponibilite =0 ; 
+                    int disponibilite = 0 ; 
                     if(cb.isSelected())
                        disponibilite = 1 ;
 
-                    Menu c = new Menu(tfnom.getText(),tfDescription.getText());
+                    int entiercal = Integer.parseInt(tfCalorie.getText());
+                    
+                    Menu c = new Menu(entiercal,disponibilite,tfnom.getText(),tfDescription.getText());
                     if(ServiceMenu.getinstance().addTask(c)){
                         Dialog.show("Alert","ajouté avec succés","ok",null);
                     }else {
@@ -53,7 +54,7 @@ public class AjouterMenu extends Form {
                 }
             
         });
-        addAll(tfnom,tfDescription,cb,btnadd);
+        addAll(tfnom,tfDescription,tfCalorie,cb,btnadd);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_KEYBOARD_ARROW_LEFT, ev->previous.show());
 
 

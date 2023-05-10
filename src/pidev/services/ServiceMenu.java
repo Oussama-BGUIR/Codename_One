@@ -43,12 +43,6 @@ public class ServiceMenu {
         return instance;
     }
 
-
-
-
-
-
-
     //methode d'ajout
     public boolean addTask(Menu r){
 
@@ -56,8 +50,8 @@ public class ServiceMenu {
         String nom=r.getNom();
         String description=r.getDescription();
         int calorie = r.getCalorie();
-        boolean disponibilite = r.getDisponibilite() ;
-
+        int disponibilite = r.getDisponibilite() ;
+        System.err.println(disponibilite);
 
         String url = Statics.BASE_URL+"menu/addmenu?nom="+ r.getNom() + "&description="+ r.getDescription() + "&calorie="+ r.getCalorie() + "&disponibilite="+ r.getDisponibilite();
         String requestBody = "  {\"nom\":\""+nom+"\",\"description\":\""+description+"\",\"calorie\":\""+calorie+"\",\"disponibilite\":\""+disponibilite+"\"}  ";
